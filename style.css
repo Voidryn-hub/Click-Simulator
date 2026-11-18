@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(5, 8, 15, 0.65), rgba(5, 8, 15, 0.85)),
+    url("./img/img.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+}
+
+/* PAINEL PRINCIPAL */
+
+main {
+  width: 100%;
+  max-width: 400px;
+  padding: 35px 25px;
+
+  background: rgba(15, 20, 30, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 25px;
+
+  text-align: center;
+
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+}
+
+/* TÍTULO */
+
+h1 {
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+/* PONTUAÇÃO */
+
+#ponts {
+  color: #6de97e;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+/* BOTÕES */
+
+button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 12px;
+
+  border: none;
+  border-radius: 15px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* BOTÃO DE PONTOS */
+
+#click {
+  background: #6de97e;
+  color: #101820;
+}
+
+#click:hover {
+  background: #51d966;
+  transform: scale(1.03);
+}
+
+#click:active {
+  transform: scale(0.96);
+}
+
+/* BOTÃO GOOGLE */
+
+#loginGoogle {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#loginGoogle:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+#loginGoogle:active {
+  transform: scale(0.97);
+}
+
+/* CELULARES */
+
+@media (max-width: 480px) {
+  main {
+    padding: 30px 20px;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+}
+
+#listaRanking {
+  color: white;
+}
+
+#listaRanking li {
+  color: white;
+}
