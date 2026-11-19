@@ -1,5 +1,7 @@
+
 // Import Ferramentas
 import { auth, db } from "./firebase.js";
+
 import {
   doc,
   getDoc,
@@ -7,28 +9,30 @@ import {
 } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-firestore.js";
 
 // Buscar pontos no banco de dados
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
+import {
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
 
-//
+// Elementos da página
 const click = document.getElementById("click");
 const textPonts = document.getElementById("ponts");
 
 let pontos = 0;
 
-//
+// Carregar pontos do ranking
 onAuthStateChanged(auth, async function(usuario) {
   if (usuario) {
-    const referencia = doc(db, "users", usuario.uid);
-    const resultado = await getDoc(referencia);
+    const referenciaRanking = doc(db, "ranking", usuario.uid);
+    const resultado = await getDoc(referenciaRanking);
 
     if (resultado.exists()) {
-      pontos = resultado.data().pontos;
+      pontos = resultado.data().pontos || 0;
       textPonts.textContent = "Pontos: " + pontos;
     }
   }
 });
 
-// Save ponts
+// Salvar pontos
 click.addEventListener("click", async function() {
 
   const usuario = auth.currentUser;
@@ -43,12 +47,8 @@ click.addEventListener("click", async function() {
   textPonts.textContent = "Pontos: " + pontos;
 
   try {
-    const referencia = doc(db, "users", usuario.uid);
     const referenciaRanking = doc(db, "ranking", usuario.uid);
-
-    await setDoc(referencia, {
-      pontos: pontos
-    });
+    const dadosRanking = await getDoc(referenciaRanking);
 
     const nomeCompleto = usuario.displayName || "Jogador";
 
@@ -57,10 +57,21 @@ click.addEventListener("click", async function() {
       .trim()
       .split(/\s+/)[ 0 ];
 
-    await setDoc(referenciaRanking, {
-      nome: primeiroNome || "Jogador",
-      pontos: pontos
-    });
+    if (dadosRanking.exists()) {
+
+      await setDoc(referenciaRanking, {
+        pontos: pontos
+      }, { merge: true });
+
+    } else {
+
+      await setDoc(referenciaRanking, {
+        nome: primeiroNome || "Jogador",
+        pontos: pontos
+      });
+
+    }
+
   } catch (erro) {
     console.log(erro);
     alert("Não foi possível salvar os pontos!");
