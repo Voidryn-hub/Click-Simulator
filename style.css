@@ -24,7 +24,6 @@ body {
   padding: 20px;
 }
 
-/* PAINEL PRINCIPAL */
 
 main {
   width: 100%;
@@ -41,7 +40,6 @@ main {
   backdrop-filter: blur(12px);
 }
 
-/* TÍTULO */
 
 h1 {
   color: white;
@@ -50,7 +48,10 @@ h1 {
   margin-bottom: 25px;
 }
 
-/* PONTUAÇÃO */
+h2 {
+  color: white;
+}
+
 
 #ponts {
   color: #6de97e;
@@ -59,7 +60,6 @@ h1 {
   margin-bottom: 30px;
 }
 
-/* BOTÕES */
 
 button {
   width: 100%;
@@ -76,7 +76,6 @@ button {
   transition: 0.2s;
 }
 
-/* BOTÃO DE PONTOS */
 
 #click {
   background: #6de97e;
@@ -92,7 +91,6 @@ button {
   transform: scale(0.96);
 }
 
-/* BOTÃO GOOGLE */
 
 #loginGoogle {
   background: rgba(255, 255, 255, 0.1);
@@ -108,7 +106,6 @@ button {
   transform: scale(0.97);
 }
 
-/* CELULARES */
 
 @media (max-width: 480px) {
   main {
